@@ -1,0 +1,54 @@
+
+import inscripcionUniversidad.*
+
+describe "Inscripcion Materias" {
+	
+	var objetos1 = new MateriaSinPrerrequisitos()
+	var intro = new MateriaSinPrerrequisitos() 
+	var objetos2 = new Materia()
+	var sistOp = new Materia()
+	var tpFinal = new MateriaPorCredito()	
+	
+	var lids = new Carrera( materias = [objetos1,intro,objetos2,sistOp])
+	
+	var jose = new Estudiante()
+	var pedro = new Estudiante()
+	var agustin = new Estudiante()
+	
+	var objetos1Aprobado = new MateriaAprobada(nota = 7, anio = 1)
+	var introAprobado = new MateriaAprobada(nota = 8, anio = 1)
+	
+	fixture {
+		
+		objetos1.anio(1)
+		objetos1.cupo(2)
+		objetos1.credito(10)
+		objetos1.carrera(lids)
+		
+		intro.anio(1)
+		intro.cupo(2)
+		intro.credito(10)
+		intro.carrera(lids)	
+		
+		objetos2.anio(2)
+		objetos2.cupo(2)
+		objetos2.credito(10)	
+		objetos2.carrera(lids)
+		objetos2.materiasCorrelativas([objetos1])
+		
+		sistOp.anio(2)
+		sistOp.cupo(2)
+		sistOp.credito(10)	
+		sistOp.carrera(lids)
+		sistOp.materiasCorrelativas([intro])
+			
+	}
+
+}
+
+
+
+
+
+
+

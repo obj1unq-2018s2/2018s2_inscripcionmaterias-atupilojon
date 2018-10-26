@@ -22,26 +22,33 @@ describe "Inscripcion Materias" {
 		
 		objetos1.anio(1)
 		objetos1.cupo(2)
-		objetos1.credito(10)
+		objetos1.creditos(10)
 		objetos1.carrera(lids)
 		
 		intro.anio(1)
 		intro.cupo(2)
-		intro.credito(10)
+		intro.creditos(10)
 		intro.carrera(lids)	
 		
 		objetos2.anio(2)
 		objetos2.cupo(2)
-		objetos2.credito(10)	
+		objetos2.creditos(10)	
 		objetos2.carrera(lids)
 		objetos2.materiasCorrelativas([objetos1])
 		
 		sistOp.anio(2)
 		sistOp.cupo(2)
-		sistOp.credito(10)	
+		sistOp.creditos(10)	
 		sistOp.carrera(lids)
 		sistOp.materiasCorrelativas([intro])
 			
+	}
+	
+	test "Un alumno se intenta inscribir a una materia que ya cursar, se rechaza" {
+		
+		jose.inscribir(sistOp)
+		assert.notThat(sistOp.estaInscripto(jose))
+		
 	}
 
 }

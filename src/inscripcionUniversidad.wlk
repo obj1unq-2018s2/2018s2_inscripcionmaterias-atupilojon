@@ -27,11 +27,11 @@ class Materia {
 	
 	var estudiantesInscriptos = []
 	var estudiantesEnEspera = []
-	const property carrera = null
-	const property materiasCorrelativas = null
-	const property creditos = null
-	const property anio = null
-	const property cupo = null
+	var property carrera = null
+	var property materiasCorrelativas = null
+	var property creditos = null
+	var property anio = null
+	var property cupo = null
 	
 	method estudiantesInscriptos() {
 		return estudiantesInscriptos	
@@ -131,7 +131,7 @@ class MateriaAprobada {
 
 class Estudiante {
 
-	var property materiasAprobadas = null
+	var property materiasAprobadas = []
 	var property carrerasCursando = []
 	var property anioCursando = 0
 	var property creditos = 0

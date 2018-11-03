@@ -6,7 +6,7 @@ class Carrera {
 	const materias = []
 	
 	method materiasPorAnio(anio){
-		if ( anio < 1 ) {
+		if ( anio < 1 ) { // TODO En realidad esta validación es innecesaria.
 			return []
 		}
 		else {
@@ -43,11 +43,13 @@ class Materia {
 	
 	method correlativasAprobadas(estudiante) {
 		return materiasCorrelativas.all (
+			// TODO Delegar en estudiante.
 			{ materia => estudiante.materiasAprobadas().contains(materia) }
 		)
 	}
 	
 	method cursandoMismoAnio(estudiante) {
+		// TODO Esto no refleja lo que pide el enunciado
 		return anio == estudiante.anioCursando()
 	}
 	
@@ -150,6 +152,7 @@ class Estudiante {
 	method anioAnteriorAprobado(materia) {
 		var carreraDeLaMateria = materia.carrera()
 		var anioAnteriorMateria = materia.anio() - 1
+		// TODO Esto es una gran confusión, básicamente no tiene sentido
 		return self.materiasAprobadasPorAnio(anioAnteriorMateria).all (
 			{ materiaAprobada => carreraDeLaMateria.materiasPorAnio(anioAnteriorMateria)
 				.contains(materiaAprobada)
@@ -160,6 +163,7 @@ class Estudiante {
 	method puedeInscribirse(materia) {
 		return not materia.estaInscripto(self) and
 				not materiasAprobadas.contains(materia) and
+				// TODO Esta regla no corresponde al enunciado.
 				self.anioAnteriorAprobado(materia)
 	}
 	
@@ -169,6 +173,7 @@ class Estudiante {
 		)
 	}
 	
+	// TODO Acá esto también es muy confuso, no parece tener sentido, nunca se usa.
 	method materiaAprobada(materiaAprobada,nota,anio) {
 		materiaAprobada.nota(nota)
 		materiaAprobada.anio(anio)
@@ -185,6 +190,7 @@ class Estudiante {
 		materia.bajaInscripcion(self)
 	}
 	
+	// TODO Este nombre no es muy descriptivo.
 	method guaDelEstudiante(carrera) {
 		const materiasDeCarrera = carrera.materiasTotales()
 		return materiasDeCarrera.any (
@@ -193,12 +199,14 @@ class Estudiante {
 	}
 	
 	method InscripcioneTotales() {
+		// TODO Esto devuelve una lista de carreras, no es lo pedido
 		return carrerasCursando.filter (
 			{ carrera => carrera.materiasTotales().estaInscrito(self)}
 		)
 	}
 	
 	method InscripcioneTotalesEnEspera() {
+		// TODO Esto devuelve una lista de carreras, no es lo pedido
 		return carrerasCursando.filter (
 			{ carrera => carrera.materiasTotales().estaInscrito(self)}
 		)

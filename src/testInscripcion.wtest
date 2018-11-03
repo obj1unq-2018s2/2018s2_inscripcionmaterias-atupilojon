@@ -15,6 +15,7 @@ describe "Inscripcion Materias" {
 	var pedro = new Estudiante()
 	var agustin = new Estudiante()
 	
+	// TODO Objetos sin usar
 	var objetos1Aprobado = new MateriaAprobada(nota = 7, anio = 1)
 	var introAprobado = new MateriaAprobada(nota = 8, anio = 1)
 	
@@ -46,7 +47,7 @@ describe "Inscripcion Materias" {
 	
 	test "Un alumno se intenta inscribir a una materia que ya cursar, se rechaza" {
 		
-		jose.inscribir(sistOp)
+		jose.inscribir(sistOp) // TODO Debería tirar excepcion
 		assert.notThat(sistOp.estaInscripto(jose))
 		
 	}
